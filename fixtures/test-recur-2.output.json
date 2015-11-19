@@ -1,0 +1,51 @@
+{
+    "events": [
+        {
+            "geography": {
+                "coordinates": [
+                    [
+                        -73.5691293178522,
+                        45.4950676163102
+                    ],
+                    [
+                        -73.5708449228424,
+                        45.4958905974807
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "headline": "Recur test 2 (partial on last day)",
+            "severity": "MINOR",
+            "status": "ACTIVE",
+            "event_type": "CONSTRUCTION",
+            "id": "mtl511.michaelmulley.com/7441681",
+            "event_subtypes": [
+                "OBSTRUCTION"
+            ],
+            "created": "2015-11-16T13:56:59-05:00",
+            "schedule": {
+                "recurring_schedules": [
+                    {
+                        "daily_end_time": "23:59",
+                        "daily_start_time": "10:00",
+                        "start_date": "2014-07-15",
+                        "end_date": "2016-03-30"
+                    }
+                ],
+                "exceptions": [
+                    "2016-03-30 10:00-17:00"
+                ]
+            },
+            "areas": [
+                {
+                    "id": "geonames.org/6174337",
+                    "name": "Ville-Marie"
+                }
+            ],
+            "updated": "2015-11-16T13:56:59-05:00"
+        }
+    ],
+    "meta": {
+        "version": "v1"
+    }
+}

@@ -1,0 +1,11 @@
+language: python
+python:
+    - "3.5"
+install:
+    - "pip install psycopg2"
+    - "pip install open511"
+before_script:
+    - createdb -U postgres open511
+    - psql -U postgres -d open511 -c "CREATE EXTENSION postgis"
+script:
+    - python tests.py

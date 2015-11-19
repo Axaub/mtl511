@@ -1,0 +1,48 @@
+{
+    "meta": {
+        "version": "v1"
+    },
+    "events": [
+        {
+            "updated": "2015-11-16T13:56:59-05:00",
+            "headline": "Recur test 3 (Nothing on 1st or last day)",
+            "event_subtypes": [
+                "OBSTRUCTION"
+            ],
+            "severity": "MINOR",
+            "created": "2015-11-16T13:56:59-05:00",
+            "event_type": "CONSTRUCTION",
+            "schedule": {
+                "recurring_schedules": [
+                    {
+                        "end_date": "2016-03-29",
+                        "start_date": "2014-07-16",
+                        "daily_start_time": "10:00",
+                        "daily_end_time": "23:00"
+                    }
+                ]
+            },
+            "status": "ACTIVE",
+            "id": "mtl511.michaelmulley.com/7441681",
+            "areas": [
+                {
+                    "id": "geonames.org/6174337",
+                    "name": "Ville-Marie"
+                }
+            ],
+            "geography": {
+                "coordinates": [
+                    [
+                        -73.5691293178522,
+                        45.4950676163102
+                    ],
+                    [
+                        -73.5708449228424,
+                        45.4958905974807
+                    ]
+                ],
+                "type": "LineString"
+            }
+        }
+    ]
+}

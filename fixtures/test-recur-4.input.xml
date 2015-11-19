@@ -1,0 +1,62 @@
+<Events xmlns="GeoTrafic">
+	<Event>
+		<event-sid>7441681</event-sid>
+		<event-name>Recur test 4 (partial on 1st and last day)</event-name>
+		<event-status-tmdd-id>8</event-status-tmdd-id>
+		<event-flag-tmdd-id>1</event-flag-tmdd-id>
+		<duration-exceeded-flag>2</duration-exceeded-flag>
+		<event-severity-tmdd-id>1</event-severity-tmdd-id>
+		<event-planned-event-class-id>2</event-planned-event-class-id>
+		<event-category-id>1</event-category-id>
+		<event-access-level_id>1</event-access-level_id>
+		<start-time xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+		<alternate-start-time xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+		<alternate-end-time xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+		<expected-start-time>2014-07-15T12:00:00.000-04:00</expected-start-time>
+		<expected-end-time>2016-03-30T17:00:00.000-04:00</expected-end-time>
+		<estimated-duration>898560</estimated-duration>
+		<planned-event-continuous-flag>1</planned-event-continuous-flag>
+		<event-update-count>1</event-update-count>
+		<last-update-time>2015-11-16T13:56:59.320-05:00</last-update-time>
+		<recurent-times>
+			<recurent-time>
+				<schedule-times>10002300</schedule-times>
+			</recurent-time>
+		</recurent-times>
+		<event-descriptions>
+			<event-cause>
+				<ITIS-event-category-id>1280</ITIS-event-category-id>
+			</event-cause>
+		</event-descriptions>
+		<event-locations>
+			<event-location>
+				<location-latitude>299277.051000000</location-latitude>
+				<location-longitude>5039524.583000000</location-longitude>
+				<location-horizontal-datum>NAD-83</location-horizontal-datum>
+				<location-on-link>
+					<link-id>1260490</link-id>
+					<link-name>rue de la Montagne </link-name>
+					<alternate-link-name>rue de la Montagne </alternate-link-name>
+					<link-length>162.307</link-length>
+					<link-left-jurisdiction-name>Ville-Marie</link-left-jurisdiction-name>
+					<link-right-jurisdiction-name>Ville-Marie</link-right-jurisdiction-name>
+					<last-update-time>2015-01-19T00:00:00.000-05:00</last-update-time>
+					<link-street-name>rue de la Montagne </link-street-name>
+					<cross-street-name-from>rue Saint-Antoine Ouest </cross-street-name-from>
+					<cross-street-name-to>avenue des Canadiens-de-Montréal </cross-street-name-to>
+					<left-start-address-number>1000</left-start-address-number>
+					<left-end-address-number>1016</left-end-address-number>
+					<right-start-address-number>901</right-start-address-number>
+					<right-end-address-number>1015</right-end-address-number>
+					<effective-start-date>2010-04-08T00:00:00.000-04:00</effective-start-date>
+					<effective-end-date xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+					<link-geometry>
+						<LineString>
+							<posList>299397.055007307 5039462.84500691 299263.049 5039554.42</posList>
+						</LineString>
+					</link-geometry>
+				</location-on-link>
+			</event-location>
+		</event-locations>
+	</Event>	
+</Events>
