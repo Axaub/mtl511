@@ -2,9 +2,9 @@ language: python
 python:
     - "3.5"
 install:
-    - "pip install -r requirements.txt"
+    - "pip install open511 python-dateutil psycopg2"
 before_script:
     - createdb -U postgres open511
     - psql -U postgres -d open511 -c "CREATE EXTENSION postgis"
 script:
-    - python tests.py
+    - python geotrafic511/tests.py
