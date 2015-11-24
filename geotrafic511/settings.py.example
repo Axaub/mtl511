@@ -1,5 +1,8 @@
 from .default_settings import *
 
+# Should be False in production!
+DEBUG = True
+
 OPEN511_BASE_URL = 'http://example.com'
 
 SECRET_KEY = 'change_me_in_each_environment'
