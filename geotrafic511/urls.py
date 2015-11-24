@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 
@@ -13,3 +14,6 @@ urlpatterns = [
 
     url(r'^$', simple_index_page),
 ]
+
+if getattr(settings, 'URL_PREFIX'):
+    urlpatterns = url('^' + settings.URL_PREFIX, include(urlpatterns))

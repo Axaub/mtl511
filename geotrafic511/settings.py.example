@@ -9,6 +9,11 @@ SECRET_KEY = 'change_me_in_each_environment'
 
 ALLOWED_HOSTS = []
 
+URL_PREFIX = ''
+# e.g. URL_PREFIX = 'api/Open511/' if all URLs should be prefixed with that
+
+STATIC_URL = '/' + OPEN511_URL_PREFIX + 'static/'
+
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
