@@ -1,3 +1,8 @@
 open511==0.5
 psycopg2
 python-dateutil==2.4.2
+-e git+git://github.com/open511/open511-server@80dcf58#egg=open511_server
+-e git+git://github.com/open511/roadcast@2d8ad44#egg=roadcast
+gunicorn==19.3.0
+eventlet==0.17.4
+whitenoise==2.0.6

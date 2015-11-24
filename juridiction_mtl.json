@@ -1,0 +1,13 @@
+[
+{
+    "fields": {
+        "updated": "2015-11-23T21:18:25Z",
+        "created": "2015-11-04T19:49:32Z",
+        "xml_data": "<jurisdiction><name xml:lang=\"fr\">Ville de Montr&#233;al</name><timezone>America/Montreal</timezone><languages><language>fr</language></languages><link rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/legalcode\"/><email>olivier.audet@ville.montreal.qc.ca</email></jurisdiction>",
+        "id": "ville.montreal.qc.ca",
+        "external_url": ""
+    },
+    "model": "open511.jurisdiction",
+    "pk": 1
+}
+]

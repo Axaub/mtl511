@@ -19,7 +19,7 @@ from open511.converter.o5json import xml_to_json
 from open511.utils.serialization import get_base_open511_element
 from open511.validator import validate_single_item
 
-JURISDICTION = 'mtl511.michaelmulley.com'
+JURISDICTION = 'ville.montreal.qc.ca'
 TIMEZONE = pytz.timezone('America/Montreal')
 SOURCE_SRID = 32188
 
@@ -276,28 +276,33 @@ def _convert_recurrences(start_dt, end_dt, recurrences):
     
     return start_date, end_date, exceptions
 
+ARRONDISSEMENTS = [
+    ('Ahuntsic-Cartierville', 5882726),
+    ('Anjou', 5885369),
+    ('Côte-des-Neiges–Notre-Dame-de-Grâce', 5928430),
+    ("L'Île-Bizard–Sainte-Geneviève", 6053852),
+    ('LaSalle', 6945990),
+    ('Lachine', 6545041),
+    ('Le Plateau-Mont-Royal', 6052594),
+    ('Le Sud-Ouest', 6053102),
+    ('Mercier–Hochelaga-Maisonneuve', 6072211),
+    ('Montréal-Nord', 6077254),
+    ('Outremont', 6095438),
+    ('Pierrefonds-Roxboro', 6104320),
+    ('Rivière-des-Prairies–Pointe-aux-Trembles', 6123696),
+    ('Rosemont–La Petite-Patrie', 6127689),
+    ('Saint-Laurent', 6138610),
+    ('Saint-Léonard', 6138625),
+    ('Verdun', 6173767),
+    ('Ville-Marie', 6174337),
+    ('Villeray–Saint-Michel–Parc-Extension', 6174349),
+]
 
-GEONAMES_ARRONDISSEMENTS = {
-    "ahuntsiccartierville": 5882726,
-    "anjou": 5885369,
-    "côtedesneigesnotredamedegrâce": 5928430,
-    "lachine": 6545041,
-    "lasalle": 6945990,
-    "leplateaumontroyal": 6052594,
-    "lesudouest": 6053102,
-    "l'îlebizardsaintegeneviève": 6053852,
-    "mercierhochelagamaisonneuve": 6072211,
-    "montréalnord": 6077264,
-    "outremont": 6095438,
-    "pierrefondsroxboro": 6104320,
-    "rivièredesprairiespointeauxtrembles": 6123696,
-    "rosemontlapetitepatrie": 6127689,
-    "saintlaurent": 6138610,
-    "saintléonard": 6138625,
-    "verdun": 6173767,
-    "villemarie": 6174337,
-    "villeraysaintmichelparcextension": 6174349
-}
+def _normalize_arrondissement(s):
+    return re.sub(r'[\s–-]', '', s.lower())
+
+ARRONDISSEMENTS_LOOKUP = {_normalize_arrondissement(name): (name, geo_id) for name, geo_id in ARRONDISSEMENTS}
+
 @task
 def _areas(src, ev):
     area_names = set(
@@ -306,13 +311,13 @@ def _areas(src, ev):
     )
     areas = []
     for area_name in area_names:
-        area_name_normalized = re.sub(r'[\s–-]', '', area_name.lower())
-        if area_name_normalized not in GEONAMES_ARRONDISSEMENTS:
+        area_name_normalized = _normalize_arrondissement(area_name)
+        if area_name_normalized not in ARRONDISSEMENTS_LOOKUP:
             logger.warning("Arrondissement non reconnu: %s", area_name)
         else:
             areas.append({
-                'name': area_name,
-                'id': 'geonames.org/' + str(GEONAMES_ARRONDISSEMENTS[area_name_normalized])
+                'name': ARRONDISSEMENTS_LOOKUP[area_name_normalized][0],
+                'id': 'geonames.org/' + str(ARRONDISSEMENTS_LOOKUP[area_name_normalized][1])
             })
     if areas:
         ev['areas'] = areas
