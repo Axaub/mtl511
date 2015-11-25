@@ -3,4 +3,4 @@
 {% block pagetitle %}Géo-Trafic Open511{% endblock %}
 {% block headertitle %}Géo-Trafic{% endblock %}
 
-{% block content %}<p>Bonjour! Visiter l'<a href="/api/">API</a> Open511, ou voir ses données sur une <a href="/carte/">carte</a>.</p>{% endblock %}
+{% block content %}<p>Bonjour! Visiter l'<a href="{% url "open511_discovery" %}">API</a> Open511, ou voir ses données sur une <a href="{% url "o5ui_home" %}">carte</a>.</p>{% endblock %}
