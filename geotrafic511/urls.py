@@ -15,5 +15,5 @@ urlpatterns = [
     url(r'^$', simple_index_page),
 ]
 
-if getattr(settings, 'URL_PREFIX'):
-    urlpatterns = url('^' + settings.URL_PREFIX, include(urlpatterns))
+if getattr(settings, 'URL_PREFIX', None):
+    urlpatterns = [url('^' + settings.URL_PREFIX, include(urlpatterns))]
