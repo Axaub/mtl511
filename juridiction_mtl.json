@@ -9,5 +9,214 @@
     },
     "model": "open511.jurisdiction",
     "pk": 1
+},
+{
+    "model": "open511.area",
+    "pk": 1,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Ahuntsic-Cartierville</name><id>geonames.org/5882726</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 2,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Anjou</name><id>geonames.org/5885369</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 3,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>C&#244;te-des-Neiges&#8211;Notre-Dame-de-Gr&#226;ce</name><id>geonames.org/5928430</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 4,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>L'&#206;le-Bizard&#8211;Sainte-Genevi&#232;ve</name><id>geonames.org/6053852</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 5,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>LaSalle</name><id>geonames.org/6945990</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 6,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Lachine</name><id>geonames.org/6545041</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 7,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Le Plateau-Mont-Royal</name><id>geonames.org/6052594</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 8,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Le Sud-Ouest</name><id>geonames.org/6053102</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 9,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Mercier&#8211;Hochelaga-Maisonneuve</name><id>geonames.org/6072211</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 10,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Montr&#233;al-Nord</name><id>geonames.org/6077254</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 11,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Outremont</name><id>geonames.org/6095438</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 12,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Pierrefonds-Roxboro</name><id>geonames.org/6104320</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 13,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Rivi&#232;re-des-Prairies&#8211;Pointe-aux-Trembles</name><id>geonames.org/6123696</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 14,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Rosemont&#8211;La Petite-Patrie</name><id>geonames.org/6127689</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 15,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Saint-Laurent</name><id>geonames.org/6138610</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 16,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Saint-L&#233;onard</name><id>geonames.org/6138625</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 17,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Verdun</name><id>geonames.org/6173767</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 18,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Ville-Marie</name><id>geonames.org/6174337</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
+},
+{
+    "model": "open511.area",
+    "pk": 19,
+    "fields": {
+        "created": "2015-11-25T03:50:48Z",
+        "updated": "2015-11-25T03:50:48Z",
+        "xml_data": "<area><name>Villeray&#8211;Saint-Michel&#8211;Parc-Extension</name><id>geonames.org/6174349</id></area>",
+        "geom": null,
+        "auto_label": false
+    }
 }
 ]
