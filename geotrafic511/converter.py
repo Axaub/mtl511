@@ -39,6 +39,12 @@ def task(f):
     return f
 
 @task
+def _prune_links(src, ev):
+    # Business logic: if link has an effective-end-date, we should ignore it
+    for bad_location in src.xpath('event-locations/event-location[location-on-link/effective-end-date/text()]'):
+        bad_location.getparent().remove(bad_location)
+
+@task
 def _id(src, ev):
     ev['id'] = JURISDICTION + '/' + src.findtext('event-sid')
     # ev['url'] = BASE_URL + ev['id']

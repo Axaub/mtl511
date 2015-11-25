@@ -1,0 +1,48 @@
+{
+    "meta": {
+        "version": "v1"
+    },
+    "events": [
+        {
+            "id": "ville.montreal.qc.ca/7441681",
+            "severity": "MINOR",
+            "headline": "Obsolete link test (rue Test should not be in event)",
+            "event_subtypes": [
+                "OBSTRUCTION"
+            ],
+            "updated": "2015-11-16T13:56:59-05:00",
+            "status": "ACTIVE",
+            "schedule": {
+                "recurring_schedules": [
+                    {
+                        "end_date": "2016-03-30",
+                        "daily_start_time": "10:00",
+                        "start_date": "2014-07-15",
+                        "daily_end_time": "23:59"
+                    }
+                ]
+            },
+            "created": "2015-11-16T13:56:59-05:00",
+            "geography": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -73.5691293178522,
+                        45.4950676163102
+                    ],
+                    [
+                        -73.5708449228424,
+                        45.4958905974807
+                    ]
+                ]
+            },
+            "event_type": "CONSTRUCTION",
+            "areas": [
+                {
+                    "name": "Ville-Marie",
+                    "id": "geonames.org/6174337"
+                }
+            ]
+        }
+    ]
+}
