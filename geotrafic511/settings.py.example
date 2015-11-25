@@ -7,10 +7,12 @@ OPEN511_BASE_URL = 'http://example.com'
 
 SECRET_KEY = 'change_me_in_each_environment'
 
-ALLOWED_HOSTS = []
+# As a security measure, you can change this to valid values for the HTTP Host header
+# and requests for other Hosts will be rejected
+ALLOWED_HOSTS = ['*']
 
 URL_PREFIX = ''
-# e.g. URL_PREFIX = 'api/Open511/' if all URLs should be prefixed with that
+# e.g. URL_PREFIX = 'api/open511/' if all URLs should be prefixed with that
 
 STATIC_URL = '/' + OPEN511_URL_PREFIX + 'static/'
 
@@ -20,6 +22,8 @@ STATIC_URL = '/' + OPEN511_URL_PREFIX + 'static/'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'open511'
+        'NAME': 'open511',
+        'USER': 'open511',
+        'PASSWORD': 'thepassword'
     }
 }
