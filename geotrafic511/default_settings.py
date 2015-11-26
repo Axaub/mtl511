@@ -98,6 +98,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
+OPEN511_ALLOW_EDITING = False
+
 OPEN511_UI_PLUGINS = []
 
 OPEN511_UI_APP_SETTINGS = {
@@ -121,5 +123,12 @@ OPEN511_UI_APP_SETTINGS = {
         ('geonames.org/6173767', 'Verdun'),
         ('geonames.org/6174337', 'Ville-Marie'),
         ('geonames.org/6174349', 'Villeray–Saint-Michel–Parc-Extension')
+    ],
+    'mapTiles': [
+        {
+            'url': 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+            'subdomains': 'abcd',
+            'attribution': "Tuiles: <a href=\"http://cartodb.com/\" target=\"_blank\">CartoDB</a>, données: <a href=\"http://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>"
+        }
     ]
 }
