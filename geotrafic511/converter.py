@@ -11,7 +11,6 @@ import sys
 
 import dateutil.parser
 from lxml import etree
-import psycopg2
 import pytz
 
 from open511.converter.o5xml import json_struct_to_xml
@@ -23,11 +22,7 @@ JURISDICTION = 'ville.montreal.qc.ca'
 TIMEZONE = pytz.timezone('America/Montreal')
 SOURCE_SRID = 32188
 
-POSTGRES_DSN = os.environ.get('POSTGRES_DSN', 'dbname=open511 user=postgres')
-
 logger = logging.getLogger(__name__)
-
-db_conn = psycopg2.connect(POSTGRES_DSN)
 
 class DataError(Exception):
     pass
@@ -174,9 +169,9 @@ def _roads(src, ev):
     if roads:
         ev['roads'] = roads
 
-@task
-def _geography(src, ev):
-    geoms = [reproject_geometry(g) for g in
+# Not a stadard @task because it's sent a special argument, db_conn
+def _geography(src, ev, db_conn):
+    geoms = [reproject_geometry(g, db_conn) for g in
         src.xpath('event-locations/event-location/location-on-link/link-geometry')]
     if not geoms:
         raise DataError("Event is missing link-geometry")
@@ -328,7 +323,7 @@ def _areas(src, ev):
     if areas:
         ev['areas'] = areas
 
-def reproject_geometry(link_geometry):
+def reproject_geometry(link_geometry, db_conn):
     """
     Argument: an etree Element for the <link-geometry> tag.
     Returns a GeoJSON dict, reprojected into WGS84.
@@ -342,12 +337,13 @@ def reproject_geometry(link_geometry):
     return json.loads(result)
 
 
-def convert_event(src):
+def convert_event(src, db_conn):
     """
     Convert a single lxml Event from the Geo-Trafic source file into an lxml
     Element for an Open511 <event>
     """
     ev = {}
+    _geography(src, ev, db_conn) # call separately to pass db_conn
     for conv_func in conv_funcs:
         conv_func(src, ev)
     xml_ev = json_struct_to_xml(ev, root='event',
@@ -355,7 +351,7 @@ def convert_event(src):
     validate_single_item(xml_ev, ignore_missing_urls=True)
     return xml_ev
 
-def geotrafic_to_xml(xml_string):
+def geotrafic_to_xml(xml_string, db_conn):
     """
     Converts a string containing a Geo-Trafic XML document into an lxml Element
     containing an open511 document.
@@ -368,7 +364,7 @@ def geotrafic_to_xml(xml_string):
     root.append(events)
     for srcevent in srcevents:
         try:
-            ev = convert_event(srcevent)
+            ev = convert_event(srcevent, db_conn)
             events.append(ev)
         except:
             logger.exception("Error processing event %s" % srcevent.findtext('event-sid'))
@@ -383,10 +379,16 @@ def main():
         type=str, help="Nom du fichier contenant l'XML Geo-Trafic")
     parser.add_argument('-f', '--format', choices=('xml', 'json'), default='xml',
         help='Format du resultat')
+    parser.add_argument('--postgres-dsn',
+        default=os.environ.get('POSTGRES_DSN', 'dbname=open511 user=postgres'))
     args = parser.parse_args()
+
+    import psycopg2
+    db_conn = psycopg2.connect(args.postgres_dsn)
+
     with open(args.fichier, encoding='utf8') as f:
         data = f.read()
-    result = geotrafic_to_xml(data)
+    result = geotrafic_to_xml(data, db_conn)
     if args.format == 'json':
         result = json.dumps(xml_to_json(result), indent=4)
     else:
