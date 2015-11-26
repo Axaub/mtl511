@@ -4,3 +4,4 @@ __pycache__/
 local/
 settings.py
 collected_static/
+*.pid

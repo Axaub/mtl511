@@ -13,3 +13,5 @@ _log_dir = os.path.join(
 
 accesslog = os.path.join(_log_dir, 'web_access')
 errorlog = os.path.join(_log_dir, 'web_error')
+
+pidfile = 'gunicorn.pid'
