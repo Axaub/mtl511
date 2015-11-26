@@ -21,6 +21,7 @@ class GeoTraficImporter(BaseImporter):
             url += self.status['max_updated'].partition('T')[0].partition('.')[0]
         else:
             url += '2000-01-01'
+        print('Fetching URL: {}'.format(url))
         resp = requests.get(url)
         resp.raise_for_status()
 
