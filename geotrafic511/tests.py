@@ -13,7 +13,19 @@ class GeoTraficIntegrationTests(unittest.TestCase):
 
     maxDiff = None
 
+    def _get_db_conn(self):
+        try:
+            from django.core.exceptions import ImproperlyConfigured
+            from django.db import connection
+            connection.cursor().close()
+            return connection
+        except (ImportError, ImproperlyConfigured):
+            import psycopg2
+            return psycopg2.connect(
+                os.environ.get('POSTGRES_DSN', 'dbname=open511 user=postgres'))
+
     def test_outputs(self):
+        db_conn = self._get_db_conn()
         my_dir = os.path.dirname(os.path.realpath(__file__))
         fixtures_dir = os.path.join(my_dir, 'fixtures')
         input_files = glob.glob(fixtures_dir + '/*.input.xml')
@@ -22,7 +34,7 @@ class GeoTraficIntegrationTests(unittest.TestCase):
             print("Processing file %s" % os.path.basename(input_file))
             with open(input_file) as f:
                 input_data = f.read()
-            xml = converter.geotrafic_to_xml(input_data)
+            xml = converter.geotrafic_to_xml(input_data, db_conn)
             json_result = xml_to_json(xml)
             json_result = json.loads(json.dumps(json_result)) # normalize it
 

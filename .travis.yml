@@ -1,6 +1,11 @@
 language: python
 python:
     - "3.5"
+sudo: false
+cache:
+    directories:
+        - $HOME/.cache/pip
+        - $HOME/.pip-cache
 install:
     - "pip install open511 python-dateutil psycopg2"
 before_script:
