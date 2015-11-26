@@ -45,7 +45,7 @@ Des fichiers upstart sont en `deployment` -- vous pouvez les copier en `/etc/ini
 
 ### Mettre à jour
 
-Un script, 'update_app.sh', devrait faire les étapes nécessaires. Assurez-vous que l'environnement Python est activé avant d'executer le script.
+Un script, `update_app.sh`, devrait faire les étapes nécessaires. Assurez-vous que l'environnement Python est activé avant d'executer le script.
 
 ## Conversion manuelle de données XML Géo-Trafic
 
