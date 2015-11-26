@@ -5,6 +5,11 @@ import json
 import os
 import unittest
 
+try:
+    from django.core.exceptions import ImproperlyConfigured
+except ImportError:
+    ImproperlyConfigured = Exception
+
 import converter
 
 from open511.converter.o5json import xml_to_json
@@ -15,7 +20,6 @@ class GeoTraficIntegrationTests(unittest.TestCase):
 
     def _get_db_conn(self):
         try:
-            from django.core.exceptions import ImproperlyConfigured
             from django.db import connection
             connection.cursor().close()
             return connection
