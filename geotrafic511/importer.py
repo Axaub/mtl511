@@ -17,7 +17,8 @@ class GeoTraficImporter(BaseImporter):
     def fetch(self):
         url = self.opts['URL']
         if self.status.get('max_updated'):
-            url += self.status['max_updated']
+            # cut off microseconds & timezone for the URL
+            url += self.status['max_updated'].partition('T')[0].partition('.')[0]
         else:
             url += '2000-01-01'
         resp = requests.get(url)
