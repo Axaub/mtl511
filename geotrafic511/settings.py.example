@@ -1,12 +1,12 @@
 from .default_settings import *
 
 # Should be False in production!
-DEBUG = True
+DEBUG = False
 
 # Si c'est True, il y aura une interface administrative web
 ENABLE_ADMIN = False
 
-OPEN511_BASE_URL = 'http://example.com'
+OPEN511_BASE_URL = 'https://example.com' # URL to the host
 
 SECRET_KEY = 'change_me_in_each_environment'
 
@@ -19,7 +19,7 @@ URL_PREFIX = ''
 
 STATIC_URL = '/' + OPEN511_URL_PREFIX + 'static/'
 
-# Database
+# Voir l'URL suivant pour tous les options:
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
 DATABASES = {
@@ -30,3 +30,11 @@ DATABASES = {
         'PASSWORD': 'thepassword'
     }
 }
+
+OPEN511_IMPORT_TASKS = [
+    {
+        'URL': 'http://example.com/api/GeoTrafic/v1.0.0/Events/',
+        'IMPORTER': 'geotrafic511.importer.GeoTraficImporter',
+        'INTERVAL': 60 # chaque minute
+    }
+]
