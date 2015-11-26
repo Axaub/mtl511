@@ -98,6 +98,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
+OPEN511_UI_PLUGINS = []
+
 OPEN511_UI_APP_SETTINGS = {
     'areas': [
         ('geonames.org/5882726', 'Ahuntsic-Cartierville'),
