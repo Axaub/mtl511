@@ -19,8 +19,10 @@ class GeoTraficImporter(BaseImporter):
         url = self.opts['URL']
         if self.status.get('max_updated'):
             updated_timestamp = dateutil.parser.parse(self.status['max_updated'])
-            # the API doesn't want timezone or microseconds in the URL
-            url += updated_timestamp.replace(tzinfo=None, microsecond=0).isoformat()
+            # The Geo-Trafic API has a very particular timestamp format
+            url_timestamp = (updated_timestamp.replace(tzinfo=None, microsecond=0).isoformat()
+                .replace('T', '%20').replace(':', '%3A'))
+            url += url_timestamp
         else:
             url += '2000-01-01'
         print('Fetching URL: {}'.format(url))
