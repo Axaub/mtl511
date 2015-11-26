@@ -169,7 +169,7 @@ def _roads(src, ev):
     if roads:
         ev['roads'] = roads
 
-# Not a stadard @task because it's sent a special argument, db_conn
+@task
 def _geography(src, ev, db_conn):
     geoms = [reproject_geometry(g, db_conn) for g in
         src.xpath('event-locations/event-location/location-on-link/link-geometry')]
@@ -187,6 +187,7 @@ def _geography(src, ev, db_conn):
             'coordinates': [g['coordinates'] for g in geoms]
         }
     ev['geography'] = geom
+_geography.provide_db_connection = True
 
 INTERVALS_FORMAT = '%Y-%m-%dT%H:%M'
 @task
@@ -343,9 +344,11 @@ def convert_event(src, db_conn):
     Element for an Open511 <event>
     """
     ev = {}
-    _geography(src, ev, db_conn) # call separately to pass db_conn
     for conv_func in conv_funcs:
-        conv_func(src, ev)
+        if getattr(conv_func, 'provide_db_connection', None):
+            conv_func(src, ev, db_conn)
+        else:
+            conv_func(src, ev)
     xml_ev = json_struct_to_xml(ev, root='event',
         custom_namespace='http://ville.montreal.qc.ca/open511-extensions')
     validate_single_item(xml_ev, ignore_missing_urls=True)
