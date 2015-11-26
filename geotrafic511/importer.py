@@ -2,6 +2,7 @@ import logging
 
 from django import db
 
+import dateutil.parser
 from lxml import etree
 import requests
 
@@ -17,8 +18,9 @@ class GeoTraficImporter(BaseImporter):
     def fetch(self):
         url = self.opts['URL']
         if self.status.get('max_updated'):
-            # cut off microseconds & timezone for the URL
-            url += self.status['max_updated'].partition('T')[0].partition('.')[0]
+            updated_timestamp = dateutil.parser.parse(self.status['max_updated'])
+            # the API doesn't want timezone or microseconds in the URL
+            url += updated_timestamp.replace(tzinfo=None, microsecond=0).isoformat()
         else:
             url += '2000-01-01'
         print('Fetching URL: {}'.format(url))
