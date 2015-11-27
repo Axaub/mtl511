@@ -39,6 +39,8 @@ OPEN511_IMPORT_TASKS = [
     }
 ]
 
+EMAIL_HOST = 'smtp'
+
 # Les utilisateurs ici recovront des courriels avec les erreurs
 ADMINS = (
 # 	('Denis Coderre', 'denis.coderre@example.com'),
