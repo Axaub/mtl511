@@ -225,7 +225,7 @@ def _schedule(src, ev):
         if exceptions:
             ev['schedule']['exceptions'] = exceptions
     else:
-        if (start_dt.hour == 0 and start_dt.minute == 0
+        if (start_dt.hour == 0 and start_dt.minute in (0, 1)
                 and ((not end_dt) or (end_dt.hour == 23 and end_dt.minute == 59))):
             # An intervals schedule would still be valid here,
             # I just think it's nicer to use a recurring schedule and
