@@ -98,6 +98,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 
+EMAIL_SUBJECT_PREFIX = '[Open511] '
+
 OPEN511_ALLOW_EDITING = False
 
 OPEN511_UI_PLUGINS = []
@@ -131,4 +133,102 @@ OPEN511_UI_APP_SETTINGS = {
             'attribution': "Tuiles: <a href=\"http://cartodb.com/\" target=\"_blank\">CartoDB</a>, données: <a href=\"http://www.openstreetmap.org/copyright\" target=\"_blank\">OpenStreetMap</a>"
         }
     ]
+}
+
+
+_logs_dir = os.path.join(os.path.dirname(BASE_DIR), 'logs')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'timestamped': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'logfile': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(_logs_dir, 'app_error'),
+            'formatter': 'timestamped'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'INFO',
+        },
+        'py.warnings': {
+            'handlers': ['console'],
+        }
+    },
+    'root': {
+        'handlers': ['logfile']
+    }
+}
+
+OPEN511_IMPORTER_LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'timestamped': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'filters': ['require_debug_true'],
+            'class': 'logging.StreamHandler',
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'logfile': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(_logs_dir, 'importer'),
+            'formatter': 'timestamped'
+        }
+    },
+    'loggers': {
+        'open511_server.importer': {
+            'level': 'INFO',
+            'handlers': ['logfile', 'mail_admins'],
+            'propagate': False
+        }
+    },
+    'root': {
+        'handlers': ['logfile', 'mail_admins'],
+        'level': 'ERROR'
+    }
 }
