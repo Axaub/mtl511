@@ -4,14 +4,14 @@
 
 ## Installation
 
-Vous avez besoin de Python 3.5, et access à un BD PostGIS. Pour l'installation, vous avez aussi besoin de git et de node.js (avec npm).
+Vous avez besoin de Python 3.5, et access à un BD PostgreSQL 9.x, avec PostGIS 2.x. Pour l'installation, vous avez aussi besoin de git et de node.js (avec npm).
 
 ### Création de l'environnement Python
 
 `pyvenv env511` pour créer
 `source env511/bin/activate` pour activer
 
-On sait que l'environnement Python est activé quand (env511) apparaît dans le prompt shell. Il doit être activer avant d'executer les programmes Python.
+On sait que l'environnement Python est activé quand (env511) apparaît dans le prompt shell. Il doit être activé avant d'executer les programmes Python.
 
 `mkdir ~/logs` pour creer un endroit pour mettre les logs
 
@@ -36,6 +36,8 @@ Du directoire `geotrafic511`, faire `cp settings.py.example settings.py`, et en 
 Pour mettre la jurisdiction Ville de Montréal dans le BD, faire `python manage.py loaddata juridiction_mtl.json`
 
 ### Serveur
+
+Si vous voulez éxécuter manuellement le serveur, faire:
 
 `gunicorn -c gunicorn_settings.py geotrafic511.wsgi`
 
