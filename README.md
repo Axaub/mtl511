@@ -8,10 +8,10 @@ Vous avez besoin de Python 3.5, et access à un BD PostgreSQL 9.x, avec PostGIS 
 
 ### Création de l'environnement Python
 
-`pyvenv env511` pour créer
-`source env511/bin/activate` pour activer
+`pyvenv env-geotrafic` pour créer
+`source env-geotrafic/bin/activate` pour activer
 
-On sait que l'environnement Python est activé quand (env511) apparaît dans le prompt shell. Il doit être activé avant d'executer les programmes Python.
+On sait que l'environnement Python est activé quand (env-geotrafic) apparaît dans le prompt shell. Il doit être activé avant d'executer les programmes Python.
 
 `mkdir ~/logs` pour creer un endroit pour mettre les logs
 
