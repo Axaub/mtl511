@@ -49,6 +49,22 @@ Des fichiers upstart sont en `deployment` -- vous pouvez les copier en `/etc/ini
 
 Un script, `update_app.sh`, devrait faire les étapes nécessaires. Assurez-vous que l'environnement Python est activé avant d'executer le script.
 
+## Administration
+
+### Configuration de l'interface admin
+
+En `settings.py`, assurez-vous que `ENABLE_ADMIN` est `True`; si vous avez du changer l'option, redémarrer le serveur avec `./restart_server.sh` (ou `kill -HUP `cat gunicorn.pid``).
+
+Établir un mot de passe avec `python manage.py createsuperuser`. En suite, naviguer à `/api/open511/admin/`.
+
+### Supprimer les événements
+
+Via le BD: connecter à Postgres (`psql -U geotrafic511 geotrafic511`, avec le mot de passe BD disponible en `settings.py`), et faire `TRUNCATE TABLE open511_roadevent;`. Ou utiliser l'interface admin.
+
+### Recommencer l'importation de Géo-Trafic
+
+En géneral, l'application demande de l'API Géo-Trafic seulement les événements qui ont changés depuis la dernière demande. Pour demander tous les événements, faire `DELETE FROM open511_importtaskstatus;` en Postgres, ou naviguer au section Import Task Statuses dans l'interface admin et supprimer l'objet trouvé là.
+
 ## Conversion manuelle de données XML Géo-Trafic
 
 n.b. ceci n'est pas nécessaire pour faire opérer le serveur Open511
