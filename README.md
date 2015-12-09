@@ -65,6 +65,14 @@ Via le BD: connecter à Postgres (`psql -U geotrafic511 geotrafic511`, avec le m
 
 En géneral, l'application demande de l'API Géo-Trafic seulement les événements qui ont changés depuis la dernière demande. Pour demander tous les événements, faire `DELETE FROM open511_importtaskstatus;` en Postgres, ou naviguer au section Import Task Statuses dans l'interface admin et supprimer l'objet trouvé là.
 
+### Redémarrer les services
+
+`./restart_server.sh` pour redémarrer les deux services
+
+`kill -HUP `cat gunicorn.pid`` (dans la même directoire que gunicorn.pid, ~/mtl511) pour redémarrer le serveur web
+
+`killall open511-importer` pour redémarrer le service d'importation
+
 ## Conversion manuelle de données XML Géo-Trafic
 
 n.b. ceci n'est pas nécessaire pour faire opérer le serveur Open511
