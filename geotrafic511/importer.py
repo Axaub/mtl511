@@ -1,10 +1,12 @@
 import logging
+from time import sleep
 
 from django import db
 
 import dateutil.parser
 from lxml import etree
 import requests
+from requests.exceptions import ConnectionError, HTTPError, Timeout
 
 from open511_server.importer import BaseImporter
 from . import converter
@@ -26,8 +28,7 @@ class GeoTraficImporter(BaseImporter):
         else:
             url += '2000-01-01'
         print('Fetching URL: {}'.format(url))
-        resp = requests.get(url)
-        resp.raise_for_status()
+        resp = self._get_url(url)
 
         xml_string = resp.content.decode('utf8').replace('<Events xmlns="GeoTrafic">', '<Events>')
         root = etree.fromstring(xml_string)
@@ -40,6 +41,17 @@ class GeoTraficImporter(BaseImporter):
 
         for ev in root.xpath('Event'):
             yield ev
+
+    def _get_url(self, url, retries=2):
+        try:
+            resp = requests.get(url)
+            resp.raise_for_status()
+            return resp
+        except (ConnectionError, HTTPError, Timeout):
+            if not retries:
+                raise
+            sleep(2)
+            return self._get_url(url, retries=retries - 1)
 
     def convert(self, input_document):
         try:
